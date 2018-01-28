@@ -1,4 +1,23 @@
 %p#notice= notice
+
+%h1
+  = @site.title
+%table.table
+  %thead
+    %tr
+      %th Text
+      %th Created
+      %th Updated
+  %tbody
+    - @site.scraped_results.each do |res|
+      %tr
+        %td
+          = res.text
+        %td
+          = res.created_at
+        %td
+          = res.updated_at
+
 = link_to 'Edit', edit_site_path(@site)
 |
 = link_to 'Back', sites_path
