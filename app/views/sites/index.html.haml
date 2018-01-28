@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Sites
+%table.table
+  %thead
+    %tr
+      %th title
+      %th url
+      %th css_selector
+      %th menu
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td
+          = site.title
+        %td
+          = site.url
+        %td
+          = site.css_selector
+        %td
+          = link_to 'Show', site
+          = link_to 'Edit', edit_site_path(site)
+          = link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Site', new_site_path

@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: otsumami_<%= ENV.fetch("RAILS_ENV") { "development" } %>
+
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  username: root
+  password: test1234
+
+test:
+  <<: *default
+  username: root
+  password: test1234
+
+production:
+  <<: *default
+  username: <%= Rails.application.secrets.db_user %>
+  password: <%= Rails.application.secrets.db_password %>
