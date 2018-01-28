@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class SlackService
-  def self.slack_post(text)
-    uri = URI.parse(ENV['SLACK_URL'])
-    params = { text: text, username: 'kakuyasu' }
+  def self.post(slack_url, text)
+    uri = URI.parse(slack_url)
+    params = { text: text, username: "kakuyasu" }
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.start do

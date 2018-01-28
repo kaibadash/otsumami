@@ -9,7 +9,7 @@
       %th Created
       %th Updated
   %tbody
-    - @site.scraped_results.each do |res|
+    - @site.scraped_results.order(updated_at: :desc).limit(100).each do |res|
       %tr
         %td
           = res.text
