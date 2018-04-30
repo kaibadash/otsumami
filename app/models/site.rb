@@ -4,6 +4,7 @@ require "open-uri"
 
 class Site < ApplicationRecord
   has_many :scraped_results
+  belongs_to :user
 
   def parse
     dom = Nokogiri::HTML(open(url).read)

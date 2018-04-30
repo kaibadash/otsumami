@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class SitesController < ApplicationController
+  include Secured
   before_action :set_site, only: %i(show edit update destroy)
 
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = Site.all.where(user: @current_user)
   end
 
   # GET /sites/1
@@ -25,6 +26,7 @@ class SitesController < ApplicationController
   # POST /sites.json
   def create
     @site = Site.new(site_params)
+    @site.user = @current_user
 
     respond_to do |format|
       if @site.save
@@ -40,6 +42,7 @@ class SitesController < ApplicationController
   # PATCH/PUT /sites/1
   # PATCH/PUT /sites/1.json
   def update
+    @site.user = @current_user
     respond_to do |format|
       if @site.update(site_params)
         format.html { redirect_to @site, notice: "Site was successfully updated." }
