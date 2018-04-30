@@ -20,3 +20,4 @@ production:
   <<: *default
   username: <%= Rails.application.secrets.db_user %>
   password: <%= Rails.application.secrets.db_password %>
+  socket: /var/run/mysqld/mysqld.sock
