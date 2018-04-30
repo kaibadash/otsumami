@@ -4,12 +4,15 @@ require "open-uri"
 
 class Site < ApplicationRecord
   has_many :scraped_results
+  belongs_to :user
 
   def parse
     dom = Nokogiri::HTML(open(url).read)
     items = dom.css(css_selector)
     items.each do |d|
-      ScrapedResult.find_or_create_by!(site: self, text: d.text.strip.delete("\t"))
+      res = ScrapedResult.find_or_initialize_by(site: self, text: d.text.strip.delete("\t"))
+      res.notify if res.new_record?
+      res.save!
     end
   end
 end

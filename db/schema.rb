@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128155230) do
+ActiveRecord::Schema.define(version: 20180430161359) do
 
   create_table "scraped_results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "site_id"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20180128155230) do
     t.string "title"
     t.string "url"
     t.string "css_selector"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "uid"
+    t.string "name"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
