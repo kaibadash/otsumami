@@ -13,5 +13,10 @@
   %body
     %nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
       %a.navbar-brand{:href => "/"} Otsumami
+      - if @current_user.present?
+        %span.navbar-text.right_nav
+          = @current_user.name
+      - else
+        %a.navbar-text.right_nav{:href => "/auth/auth0"} Login
     .container
       = yield
