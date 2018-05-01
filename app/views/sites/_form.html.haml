@@ -13,10 +13,11 @@
     = form.text_field :title, placeholder: "title", class: "form-control"
   .form-group
     %label{:for => "url"} URL
-    = form.text_field :url, placeholder: "URL", class: "form-control"
+    = form.text_field :url, placeholder: "URL", class: "form-control", id: :url
   .form-group
     %label{:for => "css_selector"} CSS Selector
-    = form.text_field :css_selector, placeholder: "CSS Selector", class: "form-control"
+    = form.text_field :css_selector, placeholder: "CSS Selector", class: "form-control", id: :css_selector
   .actions
+    %button{onclick: "preview(); return false;", class: "btn btn-primary"} Preview
     = form.submit(class: "btn btn-primary")
 

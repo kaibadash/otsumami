@@ -213,6 +213,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   erb2haml
+  faraday
   haml
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
